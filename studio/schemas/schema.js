@@ -9,7 +9,7 @@ import config from './config.js';
 import header from './header.js';
 import footer from './footer.js';
 import advanced from './advanced.js';
-import signOns from './signOns.js';
+import signOn from './signOn.js';
 import page from './page.js';
 import partner from './partner.js';
 import post from './post.js';
@@ -33,7 +33,7 @@ export default createSchema({
     header,
     footer,
     advanced,
-    signOns,
+    signOn,
     page,
     partner,
     post,

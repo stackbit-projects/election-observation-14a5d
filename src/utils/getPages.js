@@ -26,6 +26,8 @@ import _ from 'lodash';
  * @return {Array}
  */
 export default function getPages(pages, urlPath) {
+    console.log('pages: ', pages);
+    console.log('urlPath: ', urlPath);
     urlPath = _.trim(urlPath, '/');
     const urlPathParts = _.split(urlPath, '/');
     return _.filter(pages, page => {
