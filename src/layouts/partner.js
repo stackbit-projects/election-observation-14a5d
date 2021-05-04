@@ -20,7 +20,7 @@ export default class Partner extends React.Component {
                 </header>
                 {_.get(this.props, 'page.img_path', null) && (
                 <div className="post-image">
-                  <img src={withPrefix(_.get(this.props, 'page.img_path', null))} alt={_.get(this.props, 'page.content_img_alt', null)} />
+                  <img src={withPrefix(_.get(this.props, 'page.img_path', null))} alt={_.get(this.props, 'page.img_alt', null)} />
                 </div>
                 )}
               </article>

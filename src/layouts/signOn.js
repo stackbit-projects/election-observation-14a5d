@@ -7,7 +7,6 @@ import {getPages, Link, withPrefix} from '../utils';
 
 export default class SignOn extends React.Component {
     render() {
-        console.log(this.props);
         let display_posts = _.orderBy(getPages(this.props.pages, '/partner'), 'date', 'desc');
         return (
             <Layout {...this.props}>

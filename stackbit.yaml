@@ -293,8 +293,8 @@ models:
     label: Page
     layout: page
     exclude:
-      - "partner/**"
-      - "posts/**"
+      - partners/**
+      - posts/**
     fields:
       - type: string
         name: title
@@ -366,7 +366,7 @@ models:
     urlPath: '/partner/{slug}'
     label: Partner
     layout: partner
-    folder: partner
+    folder: partners
     fields:
       - type: string
         name: title

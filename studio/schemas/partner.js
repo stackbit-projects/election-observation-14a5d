@@ -26,7 +26,7 @@ export default {
         },
         {
             "type": "string",
-            "name": "thumb_img_alt",
+            "name": "img_alt",
             "title": "Image alt text",
             "description": "The alt text of the logo for the partner",
             "validation": null
@@ -59,7 +59,7 @@ export default {
             "validation": Rule => Rule.required(),
             "options": {
                 "list": [
-                    "content/pages"
+                    "content/pages
                 ]
             }
         },
