@@ -59,7 +59,7 @@ export default {
             "validation": Rule => Rule.required(),
             "options": {
                 "list": [
-                    "content/pages
+                    "content/pages"
                 ]
             }
         },
