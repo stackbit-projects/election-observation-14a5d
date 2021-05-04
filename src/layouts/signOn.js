@@ -7,7 +7,7 @@ import {getPages, Link, withPrefix} from '../utils';
 
 export default class SignOn extends React.Component {
     render() {
-        let display_posts = _.orderBy(getPages(this.props.pages, '/partner'), 'date', 'desc');
+        let display_posts = _.orderBy(getPages(this.props.pages, '/posts'), 'date', 'desc');
         return (
             <Layout {...this.props}>
               <header className="screen-reader-text">
