@@ -270,12 +270,12 @@ models:
         name: seo
         models:
           - stackbit_page_meta
-  blog:
+  signOn:
     type: page
-    urlPath: /blog
-    label: Blog
-    layout: blog
-    file: blog/index.md
+    urlPath: /partners
+    label: SignOn
+    layout: signOn
+    file: signOn/index.md
     hideContent: true
     singleInstance: true
     fields:
@@ -355,6 +355,38 @@ models:
         name: excerpt
         label: Excerpt
         description: The excerpt of the post displayed in the blog feed.
+      - type: model
+        name: seo
+        models:
+          - stackbit_page_meta
+  partner:
+    type: page
+    urlPath: '/partner/{slug}'
+    label: Partner
+    layout: partner
+    folder: partner
+    fields:
+      - type: string
+        name: title
+        label: Title
+        description: The name of the partner.
+        required: true
+      - type: string
+        name: subtitle
+        label: Subtitle
+        description: The text shown just below the name of the partner.
+      - type: date
+        name: date
+        label: Date
+        required: true
+      - type: image
+        name: img_path
+        label: Image
+        description: The partner logo.
+      - type: string
+        name: img_alt
+        label: Image alt text
+        description: The alt text of the partner logo.
       - type: model
         name: seo
         models:

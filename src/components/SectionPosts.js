@@ -8,7 +8,7 @@ import CtaButtons from './CtaButtons';
 export default class SectionPosts extends React.Component {
     render() {
         let section = _.get(this.props, 'section', null);
-        let display_posts = _.orderBy(getPages(this.props.pages, '/partners'), 'date', 'desc');
+        let display_posts = _.orderBy(getPages(this.props.pages, '/partner'), 'date', 'desc');
         let recent_posts = display_posts.slice(0, _.get(section, 'posts_number', null));
         return (
             <section id={_.get(section, 'section_id', null)} className="block block-posts">
@@ -26,6 +26,11 @@ export default class SectionPosts extends React.Component {
                       <header className="post-header">
                         <h3 className="post-title"><Link href={withPrefix(_.get(post, 'stackbit_url_path', null))} rel="bookmark">{_.get(post, 'title', null)}</Link></h3>
                       </header>
+                      {_.get(post, 'subtitle', null) && (
+                      <div className="post-content">
+                        <p>{_.get(post, 'subtitle', null)}</p>
+                      </div>
+                      )}
                     </div>
                   </article>
                   ))}

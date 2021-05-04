@@ -22,13 +22,14 @@ module.exports = {
                 flattenAssetUrls: true,
                 pages: [
                     { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'advanced') },
-                    { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'blog') },
+                    { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'signOn') },
                     { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'page') },
-                    { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'post') }
+                    { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'post') },
+                    { path: '/{stackbit_url_path}', predicate: _.matchesProperty('__metadata.modelName', 'partner') }
                 ],
                 commonProps: (items) => {
                     return {
-                        pages: _.filter(items, item => ["advanced","blog","page","post"].includes(_.get(item, '__metadata.modelName'))),
+                        pages: _.filter(items, item => ["advanced","signOn","page","post","partner"].includes(_.get(item, '__metadata.modelName'))),
                         data: {
                             config: _.find(items, _.matchesProperty('__metadata.modelName', 'config'))
                         }
