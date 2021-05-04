@@ -20,12 +20,12 @@ export default class SignOn extends React.Component {
                   <article key={post_idx} className="post post-card">
                     <div className="post-inside">
                       {_.get(post, 'img_path', null) && (
-                      <div className="post-thumbnail" href={withPrefix(_.get(post, 'stackbit_url_path', null))}>
+                      <Link className="post-thumbnail" href={withPrefix(_.get(post, 'stackbit_url_path', null))}>
                         <img src={withPrefix(_.get(post, 'img_path', null))} alt={_.get(post, 'img_alt', null)} />
-                      </div>
+                      </Link>
                       )}
                       <header className="post-header">
-                        <h2 className="post-title"><div href={withPrefix(_.get(post, 'stackbit_url_path', null))} rel="bookmark">{_.get(post, 'title', null)}</div></h2>
+                        <h2 className="post-title"><Link href={withPrefix(_.get(post, 'stackbit_url_path', null))} rel="bookmark">{_.get(post, 'title', null)}</Link></h2>
                       </header>
                       {_.get(post, 'subtitle', null) && (
                       <div className="post-content">

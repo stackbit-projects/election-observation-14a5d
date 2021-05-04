@@ -292,7 +292,9 @@ models:
     type: page
     label: Page
     layout: page
-    exclude: posts/**
+    exclude:
+      - "partner/**"
+      - "posts/**"
     fields:
       - type: string
         name: title
