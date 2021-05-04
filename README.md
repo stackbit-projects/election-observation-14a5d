@@ -1,4 +1,4 @@
-# ✨ election-observation ✨
+# ✨ Digitalwahl 2021 ✨
 
 <img src="https://themes.stackbit.com/images/fresh-demo-1024x768.png" width="600">
 
