@@ -1,6 +1,17 @@
 {
-  "name": "stackbit-fresh-theme",
-  "description": "Stackbit Fresh Theme",
+  "name": "de-election-observation",
+  "description": "Digitalwahl 2021",
+  "contributors": [
+    "Rae Gaines <rae@throneless.tech"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/throneless-tech/de-election-obseration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/throneless-tech/de-election-observation/issues"
+  },
+  "homepage": "https://github.com/throneless-tech/de-election-observation#readme",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {

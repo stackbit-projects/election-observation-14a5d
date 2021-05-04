@@ -11,6 +11,7 @@ import footer from './footer.js';
 import advanced from './advanced.js';
 import blog from './blog.js';
 import page from './page.js';
+import partner from './partner.js';
 import post from './post.js';
 import section_hero from './section_hero.js';
 import section_content from './section_content.js';
@@ -34,6 +35,7 @@ export default createSchema({
     advanced,
     blog,
     page,
+    partner,
     post,
     section_hero,
     section_content,

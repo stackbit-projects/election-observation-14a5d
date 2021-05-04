@@ -1065,13 +1065,13 @@
             "relPath": "config.json",
             "data": {
                 "stackbit_model_type": "data",
-                "title": "Stackbit Fresh Theme",
+                "title": "Digitalwahl 2021",
                 "path_prefix": "/",
                 "layout_style": "overflow",
                 "palette": "blue",
                 "header": {
                     "type": "header",
-                    "title": "Stackbit Fresh",
+                    "title": "Digitalwahl 2021",
                     "tagline": "Header Tagline",
                     "profile_img": "images/avatar.png",
                     "profile_img_alt": "Author avatar",
@@ -1450,8 +1450,8 @@
                 ],
                 "seo": {
                     "type": "stackbit_page_meta",
-                    "title": "Stackbit Fresh Theme",
-                    "description": "The preview of the Fresh theme",
+                    "title": "Digitalwahl 2021",
+                    "description": "Aufruf an die demokratischen Parteien und alle Kandidierende für die Bundestagswahl",
                     "extra": [
                         {
                             "name": "og:type",
@@ -1460,7 +1460,7 @@
                         },
                         {
                             "name": "og:title",
-                            "value": "Stackbit Fresh Theme",
+                            "value": "Digitalwahl 2021",
                             "keyName": "property"
                         },
                         {
@@ -1480,7 +1480,7 @@
                         },
                         {
                             "name": "twitter:title",
-                            "value": "Stackbit Fresh Theme"
+                            "value": "Digitalwahl 2021"
                         },
                         {
                             "name": "twitter:description",
