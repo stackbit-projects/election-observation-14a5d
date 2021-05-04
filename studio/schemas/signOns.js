@@ -1,7 +1,7 @@
 export default {
     "type": "document",
-    "name": "blog",
-    "title": "Blog",
+    "name": "signOn",
+    "title": "Sign Ons",
     "fields": [
         {
             "type": "string",
@@ -24,7 +24,7 @@ export default {
             "validation": Rule => Rule.required(),
             "options": {
                 "list": [
-                    "blog"
+                    "signOn"
                 ]
             }
         },

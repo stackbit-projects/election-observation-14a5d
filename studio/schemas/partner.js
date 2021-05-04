@@ -7,14 +7,14 @@ export default {
             "type": "string",
             "name": "title",
             "title": "Title",
-            "description": "The title of the post.",
+            "description": "The name of the partner individual or organization",
             "validation": Rule => Rule.required()
         },
         {
             "type": "string",
             "name": "subtitle",
             "title": "Subtitle",
-            "description": "The text shown just below the post title.",
+            "description": "The text shown just below the partner name, if any.",
             "validation": null
         },
         {
@@ -28,8 +28,27 @@ export default {
             "type": "string",
             "name": "thumb_img_alt",
             "title": "Image alt text",
-            "description": "The alt text of the logo for the partner.",
+            "description": "The alt text of the logo for the partner",
             "validation": null
+        },
+        {
+            "type": "string",
+            "name": "layout",
+            "title": "Layout",
+            "hidden": false,
+            "validation": Rule => Rule.required(),
+            "options": {
+                "list": [
+                    "partner"
+                ]
+            }
+        },
+        {
+            "type": "string",
+            "name": "stackbit_url_path",
+            "title": "URL Path",
+            "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and partner page would be \"partners/new-post/\"",
+            "validation": Rule => Rule.required()
         },
         {
             "type": "string",

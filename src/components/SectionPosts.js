@@ -8,7 +8,7 @@ import CtaButtons from './CtaButtons';
 export default class SectionPosts extends React.Component {
     render() {
         let section = _.get(this.props, 'section', null);
-        let display_posts = _.orderBy(getPages(this.props.pages, '/posts'), 'date', 'desc');
+        let display_posts = _.orderBy(getPages(this.props.pages, '/partners'), 'date', 'desc');
         let recent_posts = display_posts.slice(0, _.get(section, 'posts_number', null));
         return (
             <section id={_.get(section, 'section_id', null)} className="block block-posts">
@@ -20,21 +20,12 @@ export default class SectionPosts extends React.Component {
                   {_.map(recent_posts, (post, post_idx) => (
                   <article key={post_idx} className="post post-card">
                     <div className="post-inside">
-                      {_.get(post, 'thumb_img_path', null) && (
-                      <Link className="post-thumbnail" href={withPrefix(_.get(post, 'stackbit_url_path', null))}><img src={withPrefix(_.get(post, 'thumb_img_path', null))} alt={_.get(post, 'thumb_img_alt', null)} /></Link>
+                      {_.get(post, 'img_path', null) && (
+                      <Link className="post-thumbnail" href={withPrefix(_.get(post, 'stackbit_url_path', null))}><img src={withPrefix(_.get(post, 'img_path', null))} alt={_.get(post, 'img_alt', null)} /></Link>
                       )}
                       <header className="post-header">
                         <h3 className="post-title"><Link href={withPrefix(_.get(post, 'stackbit_url_path', null))} rel="bookmark">{_.get(post, 'title', null)}</Link></h3>
                       </header>
-                      {_.get(post, 'excerpt', null) && (
-                      <div className="post-content">
-                        <p>{_.get(post, 'excerpt', null)}</p>
-                      </div>
-                      )}
-                      <footer className="post-meta">
-                        <time className="published"
-                          dateTime={moment(_.get(post, 'date', null)).strftime('%Y-%m-%d %H:%M')}>{moment(_.get(post, 'date', null)).strftime('%B %d, %Y')}</time>
-                      </footer>
                     </div>
                   </article>
                   ))}

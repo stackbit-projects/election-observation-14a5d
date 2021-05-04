@@ -5,9 +5,9 @@ import moment from 'moment-strftime';
 import {Layout} from '../components/index';
 import {getPages, Link, withPrefix} from '../utils';
 
-export default class Blog extends React.Component {
+export default class SignOn extends React.Component {
     render() {
-        let display_posts = _.orderBy(getPages(this.props.pages, '/posts'), 'date', 'desc');
+        let display_posts = _.orderBy(getPages(this.props.pages, '/partner'), 'date', 'desc');
         return (
             <Layout {...this.props}>
               <header className="screen-reader-text">
@@ -18,9 +18,9 @@ export default class Blog extends React.Component {
                   {_.map(display_posts, (post, post_idx) => (
                   <article key={post_idx} className="post post-card">
                     <div className="post-inside">
-                      {_.get(post, 'thumb_img_path', null) && (
+                      {_.get(post, 'img_path', null) && (
                       <Link className="post-thumbnail" href={withPrefix(_.get(post, 'stackbit_url_path', null))}>
-                        <img src={withPrefix(_.get(post, 'thumb_img_path', null))} alt={_.get(post, 'thumb_img_alt', null)} />
+                        <img src={withPrefix(_.get(post, 'img_path', null))} alt={_.get(post, 'img_alt', null)} />
                       </Link>
                       )}
                       <header className="post-header">

@@ -1,18 +1,18 @@
 import advanced from './advanced';
-import blog from './blog';
+import signOn from './signOn';
 import page from './page';
 import post from './post';
 
 export {
     advanced,
-    blog,
+    signOn,
     page,
     post
 };
 
 export default {
     advanced,
-    blog,
+    signOn,
     page,
     post
 };
