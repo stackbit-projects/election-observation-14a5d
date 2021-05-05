@@ -150,7 +150,7 @@
     &:not(.button) {
       border: 0;
       color: inherit;
-  
+
       &:hover {
         color: _palette(accent);
       }
@@ -189,7 +189,7 @@
       height: 2em;
       line-height: 2em;
       width: 2em;
-  
+
       &:hover,
       &:focus,
       &:active {
@@ -203,16 +203,16 @@
 }
 
 .site-header.dark {
-  background: _palette(secondary);
+  background: _palette(primary);
   border: 0;
-  color: _palette(meta);
+  color: _palette(bg);
 
   .site-navigation {
-    background: _palette(secondary);
+    background: _palette(primary);
   }
 
   .site-title {
-    color: #fff;
+    color: _palette(bg);
   }
 
   .menu-item {
