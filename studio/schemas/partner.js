@@ -4,6 +4,12 @@ export default {
     "title": "Partner",
     "fields": [
         {
+          "type": "boolean",
+          "name": "approved",
+          "title": "Approved",
+          "description": "Set to approved if this partner should be displayed on the site"
+        },
+        {
             "type": "string",
             "name": "title",
             "title": "Title",
@@ -32,6 +38,12 @@ export default {
             "validation": null
         },
         {
+          "type": "boolean",
+          "name": "consent",
+          "title": "Consent",
+          "description": "Did this person consent to their information being used?"
+        },
+        {
             "type": "string",
             "name": "layout",
             "title": "Layout",
@@ -48,7 +60,7 @@ export default {
             "name": "stackbit_url_path",
             "title": "URL Path",
             "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and partner page would be \"partners/new-post/\"",
-            "validation": Rule => Rule.required()
+            "validation": null
         },
         {
             "type": "string",

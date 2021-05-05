@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background: #E8ECE8;
   color: _palette(primary);
   line-height: 1.66667;
 }
@@ -251,6 +251,10 @@ textarea {
   margin-bottom: 1em;
 }
 
+.form-error {
+  color: red;
+}
+
 .form-submit {
   margin-top: 1.66667em;
 }
@@ -279,7 +283,7 @@ textarea {
     right: 10px;
     top: 50%;
     z-index: 1;
-  } 
+  }
 
   &:before {
     border-top-color: _palette(meta);

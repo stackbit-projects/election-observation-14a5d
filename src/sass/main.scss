@@ -7,12 +7,15 @@ $font: (
 
 // Palette.
 $palette: (
-  primary:       #555e69,
+  // primary:       #555e69,
+  primary:       #1B1915,
   secondary:     darken(#555e69, 15%),
-  meta:          lighten(#555e69, 25%),
+  meta:          lighten(#555e69, 35%),
   border:        lighten(#555e69, 55%),
-  bg:            lighten(#555e69, 60%),
-  accent:        #1de2bc,
+  // bg:            lighten(#555e69, 60%),
+  bg:            #E8ECE8,
+  // accent:        #1de2bc,
+  accent:        #AA7446,
   accent-blue:   #10bcf9,
   accent-violet: #9371e6,
   accent-orange: #fc6e51

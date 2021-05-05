@@ -1,12 +1,59 @@
 import React from 'react';
+import sanityClient from "../client";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import _ from 'lodash';
 
 import {markdownify} from '../utils';
 import FormField from './FormField';
 
+const FILE_SIZE = 500000;
+
+const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
+
 export default class SectionForm extends React.Component {
+    constructor() {
+        super();
+        this.state = { submitted: false, img_path: null };
+    }
     render() {
         let section = _.get(this.props, 'section', null);
+
+        // validation for the form fields
+        const validationSchema = Yup.object({
+          title: Yup.string().required(),
+          subtitle: Yup.string(),
+          img_path: Yup.mixed().test('fileSize', "File Size is too large", value => value ? value.size <= FILE_SIZE : true).test('fileType', "Unsupported File Format", value => value ? SUPPORTED_FORMATS.includes(value.type) : true),
+          img_alt: Yup.string(),
+          consent: Yup.bool().oneOf([true], 'This is a required field')
+        });
+
+        // start off fields as blank
+        const initialValues = {
+          _type: "partner",
+          layout: "partner",
+          stackbit_dir: "content/pages",
+          title: "",
+          subtitle: "",
+          img_alt: "",
+          img_path: "",
+          consent: false,
+        };
+
+        // send data to Sanity CMS via API
+        const onSubmit = (values) => {
+          console.log(img_path);
+          const request = { ...values };
+          console.log('request:', request);
+          sanityClient.create(request).then(() => {
+            alert(`Your response has been recorded.`);
+            this.setState({submitted: true});
+          });
+        };
+
+        const renderError = (message) => <p className="form-error">{message}</p>;
+
+
         return (
             <section id={_.get(section, 'section_id', null)} className="block block-form">
               {_.get(section, 'title', null) && (
@@ -16,18 +63,92 @@ export default class SectionForm extends React.Component {
                 {_.get(section, 'content', null) && (
                 markdownify(_.get(section, 'content', null))
                 )}
-                <form name={_.get(section, 'form_id', null)} id={_.get(section, 'form_id', null)} {...(_.get(section, 'form_action', null) ? ({action: _.get(section, 'form_action', null)}) : null)}method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
-                  <div className="screen-reader-text">
-                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                  </div>
-                  <input type="hidden" name="form-name" value={_.get(section, 'form_id', null)} />
-                  {_.map(_.get(section, 'form_fields', null), (field, field_idx) => (
-                    <FormField key={field_idx} {...this.props} field={field} />
-                  ))}
-                  <div className="form-submit">
-                    <button type="submit" className="button">{_.get(section, 'submit_label', null)}</button>
-                  </div>
-                </form>
+                {this.state.submitted ? (
+                  <div>Danke</div>
+                ) : (
+                  <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={async (values, { resetForm }) => {
+                      await onSubmit(values);
+                      resetForm();
+                    }}
+                  >
+                    {props => (
+                      <Form>
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="title">
+                            Name
+                          </label>
+                          <div>
+                            <Field
+                              name="title"
+                              type="text"
+                              className="form-input"
+                            />
+                            <ErrorMessage name="title" render={renderError} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="subtitle">
+                            Comments
+                          </label>
+                          <div>
+                            <Field
+                              name="subtitle"
+                              type="text"
+                              className="form-input"
+                              component="textarea"
+                            />
+                            <ErrorMessage name="subtitle" render={renderError} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="img_path">
+                            Logo
+                          </label>
+                          <div>
+                            <input
+                              id="img_path"
+                              name="img_path"
+                              type="file"
+                              onChange={event => {
+                                props.setFieldValue('img_path', event.currentTarget.files[0]);
+                              }}
+                            />
+                            <ErrorMessage name="img_path" render={renderError} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label className="form-label" htmlFor="img_alt">
+                            Alt text for the logo, if any
+                          </label>
+                          <div>
+                            <Field
+                              name="img_alt"
+                              type="text"
+                              className="form-input"
+                            />
+                            <ErrorMessage name="img_alt" render={renderError} />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label>
+                            <Field type="checkbox" name="consent" />{' '}
+                            I understand that this form is storing my submitted information so my signature may be added to the letter.
+                          </label>
+                          <div>
+                            <ErrorMessage name="consent" render={renderError} />
+                          </div>
+                        </div>
+
+                        <button type="submit" className="button is-primary">
+                          Submit
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
+                )}
               </div>
             </section>
         );
