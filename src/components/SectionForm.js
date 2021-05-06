@@ -19,6 +19,24 @@ export default class SectionForm extends React.Component {
     render() {
         let section = _.get(this.props, 'section', null);
 
+        const slugify = str => {
+          str = str.replace(/^\s+|\s+$/g, ''); // trim
+          str = str.toLowerCase();
+
+          // remove accents, swap ñ for n, etc
+          var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+          var to   = "aaaaeeeeiiiioooouuuunc------";
+          for (var i=0, l=from.length ; i<l ; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+          }
+
+          str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+
+          return `partner/${str}`;
+        };
+
         // validation for the form fields
         const validationSchema = Yup.object({
           title: Yup.string().required(),
@@ -42,13 +60,24 @@ export default class SectionForm extends React.Component {
 
         // send data to Sanity CMS via API
         const onSubmit = (values) => {
-          console.log(img_path);
-          const request = { ...values };
-          console.log('request:', request);
-          sanityClient.create(request).then(() => {
-            alert(`Your response has been recorded.`);
-            this.setState({submitted: true});
-          });
+          const slug = slugify(values.title);
+
+          const request = { ...values, stackbit_url_path: slug };
+
+          sanityClient.assets
+            .upload('image', img_path, {contentType: img_path.type, filename: img_path.name})
+            .then((document) => {
+              console.log('The file was uploaded!', document)
+            })
+            .catch((error) => {
+              console.error('Upload failed:', error.message)
+            })
+
+          sanityClient.create(request)
+            .then(() => {
+              alert(`Your response has been recorded.`);
+              this.setState({submitted: true});
+            });
         };
 
         const renderError = (message) => <p className="form-error">{message}</p>;
