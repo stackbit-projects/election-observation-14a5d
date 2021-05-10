@@ -48,8 +48,8 @@
   }
 
   .avatar {
-    border: 2px solid _palette(accent);
-    box-shadow: 0 0 1px 7px rgba(_palette(accent),.2);
+    // border: 2px solid _palette(accent);
+    // box-shadow: 0 0 1px 7px rgba(_palette(accent),.2);
     border-radius: 100%;
     display: block;
     -o-object-fit: cover;
@@ -283,8 +283,8 @@
     margin: 0 0 1.66667em;
 
     .avatar {
-      border-width: 3px;
-      box-shadow: 0 0 1px 11px rgba(_palette(accent),.2);
+      // border-width: 3px;
+      // box-shadow: 0 0 1px 11px rgba(_palette(accent),.2);
       object-fit: cover;
       height: 100px;
       width: 100px;
