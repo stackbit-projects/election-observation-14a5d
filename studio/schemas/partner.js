@@ -59,7 +59,7 @@ export default {
             "type": "string",
             "name": "stackbit_url_path",
             "title": "URL Path",
-            "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and partner page would be \"partners/new-post/\"",
+            "description": "The URL path of this page relative to site root. For example, the site root page would be \"/\", and partner page would be \"partner/new-sign-on/\"",
             "validation": Rule => Rule.required()
         },
         {

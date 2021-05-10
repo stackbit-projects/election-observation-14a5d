@@ -14,7 +14,11 @@ const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
 export default class SectionForm extends React.Component {
     constructor() {
         super();
-        this.state = { submitted: false, img_path: null };
+        this.state = {
+          document: null,
+          img_path: null,
+          submitted: false,
+        };
     }
     render() {
         let section = _.get(this.props, 'section', null);
@@ -60,23 +64,40 @@ export default class SectionForm extends React.Component {
 
         // send data to Sanity CMS via API
         const onSubmit = (values) => {
+          console.log('state: ', this.state);
+          console.log('img_path:', img_path);
           const slug = slugify(values.title);
 
           const request = { ...values, stackbit_url_path: slug };
 
-          sanityClient.assets
-            .upload('image', img_path, {contentType: img_path.type, filename: img_path.name})
-            .then((document) => {
-              console.log('The file was uploaded!', document)
-            })
-            .catch((error) => {
-              console.error('Upload failed:', error.message)
-            })
-
           sanityClient.create(request)
-            .then(() => {
+            .then(response => {
+              this.setState({submitted: true, document: response});
+              if (this.state.img_path) {
+                sanityClient.assets
+                  .upload('image', this.state.img_path, {filename: this.state.img_path.name, contentType: this.state.img_path.type})
+                  .then(imageAsset => {
+                    return sanityClient
+                      .patch(response._id)
+                      .set({
+                        img_path: {
+                          _type: 'image',
+                          asset: {
+                            _type: "reference",
+                            _ref: imageAsset._id
+                          }
+                        }
+                      })
+                      .commit()
+                  })
+                  .then((document) => {
+                    console.log('image uploaded')
+                  })
+                  .catch((error) => {
+                    console.error('Upload failed:', error.message)
+                  })
+              }
               alert(`Your response has been recorded.`);
-              this.setState({submitted: true});
             });
         };
 
@@ -141,7 +162,9 @@ export default class SectionForm extends React.Component {
                               id="img_path"
                               name="img_path"
                               type="file"
+                              accept="image/png, image/jpeg"
                               onChange={event => {
+                                this.state.img_path = event.currentTarget.files[0];
                                 props.setFieldValue('img_path', event.currentTarget.files[0]);
                               }}
                             />
