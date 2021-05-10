@@ -42,6 +42,9 @@ export default {
                 },
                 {
                     "type": "section_posts"
+                },
+                {
+                    "type": "section_subscribe"
                 }
             ]
         },

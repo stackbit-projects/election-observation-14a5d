@@ -64,8 +64,6 @@ export default class SectionForm extends React.Component {
 
         // send data to Sanity CMS via API
         const onSubmit = (values) => {
-          console.log('state: ', this.state);
-          console.log('img_path:', img_path);
           const slug = slugify(values.title);
 
           const request = { ...values, stackbit_url_path: slug };

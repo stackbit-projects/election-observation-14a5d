@@ -8,6 +8,7 @@ import SectionContent from './SectionContent';
 import SectionForm from './SectionForm';
 import SectionHero from './SectionHero';
 import SectionPosts from './SectionPosts';
+import SectionSubscribe from './SectionSubscribe';
 
 export {
     CtaButtons,
@@ -19,7 +20,8 @@ export {
     SectionContent,
     SectionForm,
     SectionHero,
-    SectionPosts
+    SectionPosts,
+    SectionSubscribe
 };
 
 export default {
@@ -32,5 +34,6 @@ export default {
     SectionContent,
     SectionForm,
     SectionHero,
-    SectionPosts
+    SectionPosts,
+    SectionSubscribe
 };
