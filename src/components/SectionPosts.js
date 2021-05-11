@@ -17,7 +17,7 @@ export default class SectionPosts extends React.Component {
               )}
               <div className="post-feed">
                 <div className="post-feed-inside">
-                  {_.map(recent_posts, (post, post_idx) => (
+                  {_.map(display_posts, (post, post_idx) => (
                     post.approved && (
                       <article key={post_idx} className="post post-card">
                         <div className="post-inside">
