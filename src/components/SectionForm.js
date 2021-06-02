@@ -47,7 +47,7 @@ export default class SectionForm extends React.Component {
           subtitle: Yup.string(),
           img_path: Yup.mixed().test('fileSize', "File Size is too large", value => value ? value.size <= FILE_SIZE : true).test('fileType', "Unsupported File Format", value => value ? SUPPORTED_FORMATS.includes(value.type) : true),
           img_alt: Yup.string(),
-          consent: Yup.bool().oneOf([true], 'This is a required field')
+          consent: Yup.bool().oneOf([true], 'Dies ist ein Pflichtfeld')
         });
 
         // start off fields as blank
@@ -139,7 +139,7 @@ export default class SectionForm extends React.Component {
                         </div>
                         <div className="form-group">
                           <label className="form-label" htmlFor="subtitle">
-                            Comments
+                            Anmerkungen
                           </label>
                           <div>
                             <Field
@@ -171,7 +171,7 @@ export default class SectionForm extends React.Component {
                         </div>
                         <div className="form-group">
                           <label className="form-label" htmlFor="img_alt">
-                            Alt text for the logo, if any
+                            ggf. Bildbeschreibung für das Logo
                           </label>
                           <div>
                             <Field
@@ -185,7 +185,7 @@ export default class SectionForm extends React.Component {
                         <div className="form-group">
                           <label>
                             <Field type="checkbox" name="consent" />{' '}
-                            I understand that this form is storing my submitted information so my signature may be added to the letter.
+                            Ich verstehe, dass dieses Formular meine eingegebenen Informationen speichert, damit meine Unterschrift dem Brief hinzugefügt werden kann.
                           </label>
                           <div>
                             <ErrorMessage name="consent" render={renderError} />
