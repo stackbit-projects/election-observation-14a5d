@@ -45,7 +45,7 @@ export default class SectionForm extends React.Component {
         const validationSchema = Yup.object({
           title: Yup.string().required(),
           subtitle: Yup.string(),
-          img_path: Yup.mixed().test('fileSize', "File Size is too large", value => value ? value.size <= FILE_SIZE : true).test('fileType', "Unsupported File Format", value => value ? SUPPORTED_FORMATS.includes(value.type) : true),
+          img_path: Yup.mixed().test('fileSize', "Datei ist zu groß", value => value ? value.size <= FILE_SIZE : true).test('fileType', "Dateiformat wird nicht unterstützt", value => value ? SUPPORTED_FORMATS.includes(value.type) : true),
           img_alt: Yup.string(),
           consent: Yup.bool().oneOf([true], 'Dies ist ein Pflichtfeld')
         });
